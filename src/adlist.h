@@ -32,11 +32,11 @@
 #define __ADLIST_H__
 
 /* Node, List, and Iterator are the only data structures used currently. */
-
+// 双向链表
 typedef struct listNode {
-    struct listNode *prev;
-    struct listNode *next;
-    void *value;
+    struct listNode *prev;  //前置节点
+    struct listNode *next;  //后置节点
+    void *value;            //节点的值
 } listNode;
 
 typedef struct listIter {
@@ -45,12 +45,12 @@ typedef struct listIter {
 } listIter;
 
 typedef struct list {
-    listNode *head;
-    listNode *tail;
-    void *(*dup)(void *ptr);
-    void (*free)(void *ptr);
-    int (*match)(void *ptr, void *key);
-    unsigned long len;
+    listNode *head;   //表头节点
+    listNode *tail;   //表尾节点
+    void *(*dup)(void *ptr); //节点复制函数：用于复制链表节点所保存的值
+    void (*free)(void *ptr); //节点释放：用于释放链表节点所保存的值
+    int (*match)(void *ptr, void *key); //节点匹配函数：比较链表节点所保存的值和输入是否相等
+    unsigned long len; //链表所包含的节点数量
 } list;
 
 /* Functions implemented as macros */
